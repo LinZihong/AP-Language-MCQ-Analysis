@@ -11,7 +11,7 @@ def get_flattened_word_forms(word):
 
 def load_word_list(filename):
     text = open(filename,'r',errors='ignore').readlines()
-    return set([x.strip() for x in text][:5])
+    return set([x.strip() for x in text])
 
 def transform_word_list(wlist):
     wf_transformed = list(map(get_flattened_word_forms, wlist))
@@ -23,3 +23,9 @@ def transform_word_list(wlist):
 wlist = load_word_list('Barron_more.txt')
 wforms = transform_word_list(wlist)
 
+answer_words = get_answer_words('./pdf/AP Lang 2015.txt')
+print(answer_words[5])
+for question_answer in answer_words:
+    intersection = set(question_answer).intersection(wforms)
+    if intersection:
+        print(intersection)

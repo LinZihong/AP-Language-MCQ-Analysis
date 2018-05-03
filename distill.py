@@ -1,9 +1,9 @@
 import re
 
-def distill():
+def distill(txt_file):
     regexStr = r"(?s)\(A\).*?(?=[0-9]|Unauthorized|Commercial)"
     regex = re.compile(regexStr)
-    text = open('./pdf/AP Lang 2015.txt', 'r', errors='ignore').read()
+    text = open(txt_file, 'r', errors='ignore').read()
     escape = ["\"", "\'", ",", ".", "!", "?", "(A)", "(B)", "(C)", "(D)", "(E)"]
     regexFound = regex.findall(text)
 
@@ -17,4 +17,5 @@ def distill():
 def split(arrayFound):
     return [x.split() for x in arrayFound]
 
-# print(distill()[:20])
+def get_answer_words(txt_file):
+    return split(distill(txt_file))
