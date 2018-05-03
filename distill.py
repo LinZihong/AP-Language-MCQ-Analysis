@@ -10,6 +10,11 @@ def distill():
     for i in range(len(regexFound)):
         for char in escape:
             regexFound[i] = regexFound[i].replace(char, "")
-            # print(result)
+        regexFound[i]=regexFound[i].strip()
 
     return regexFound
+
+def split(arrayFound):
+    return [x.split() for x in arrayFound]
+
+# print(distill()[:20])
